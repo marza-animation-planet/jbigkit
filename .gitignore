@@ -31,3 +31,10 @@
 # Debug files
 *.dSYM/
 *.su
+
+/.build/
+/release/
+/debug/
+*.dblite
+excons.cache
+

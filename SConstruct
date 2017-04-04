@@ -1,3 +1,4 @@
+import sys
 import glob
 import excons
 
@@ -33,8 +34,15 @@ env.Depends("jbig85", cmnhdr)
 def RequireJbig(env):
    env.Append(CPPPATH=[out_incdir])
    env.Append(LIBPATH=[out_libdir])
-   excons.StaticallyLink(env, "jbig85", silent=True)
-   excons.StaticallyLink(env, "jbig", silent=True)
+   if not excons.StaticallyLink(env, "jbig", silent=True):
+      env.Append(LIBS=["jbig"])
 
-Export("RequireJbig")
+def JbigName(env):
+   if sys.platform == "win32":
+      basename = "jbig.lib"
+   else:
+      basename = "libjbig.a"
+   return out_libdir + "/" + basename 
+
+Export("RequireJbig JbigName")
 

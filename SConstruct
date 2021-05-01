@@ -1,6 +1,7 @@
 import sys
 import glob
 import excons
+import SCons.Script # pylint: disable=import-error
 
 env = excons.MakeBaseEnv()
 
@@ -62,5 +63,5 @@ excons.DeclareTargets(env, prjs)
 env.Depends("jbig", cmnhdr)
 env.Depends("jbig85", cmnhdr)
 
-Export("JbigName JbigPath RequireJbig Jbig85Name Jbig85Path RequireJbig85")
+SCons.Script.Export("JbigName JbigPath RequireJbig Jbig85Name Jbig85Path RequireJbig85")
 

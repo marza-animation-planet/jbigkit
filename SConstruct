@@ -45,12 +45,14 @@ cmnhdr = env.Install(out_incdir, "libjbig/jbig_ar.h")
 
 prjs = [
    {  "name": JbigName(),
+      "alias": "jbig",
       "type": "staticlib",
       "srcs": ["libjbig/jbig.c",
                "libjbig/jbig_ar.c"],
       "install": {"include": ["libjbig/jbig.h"]}
    },
    {  "name": Jbig85Name(),
+      "alias": "jbig85",
       "type": "staticlib",
       "srcs": ["libjbig/jbig85.c",
                "libjbig/jbig_ar.c"],
